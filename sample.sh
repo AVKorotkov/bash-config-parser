@@ -10,7 +10,7 @@ source config-parser.sh
 # process configuration file
 process
 
-# access any oprion in configuration file
+# access any option in configuration file
 echo "$logdir"
 echo "$logging"
 # ...
