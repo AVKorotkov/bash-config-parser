@@ -28,7 +28,7 @@ described below.
 
 Configuration file might look like [this sample](sample.conf). You need
 to create a script and a configuration file with the same name, but with
-the extension `conf`, for example, `sample.sh` and `sample. conf`, and
+the `conf` extension, for example, `sample.sh` and `sample.conf`, and
 put both files in the same directory. Source `config-parser.sh` in your
 script and call `process` function. After that you can get an access to
 all options in your configuration file like in [this sample](sample.sh)
