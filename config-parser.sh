@@ -23,14 +23,14 @@ function set_names() {
 #
 #==============================
 function err_exit() {
-  # message to print
-  local msg="${1}"
-  # set exit code
-  local code="${2}"
-  # print error message
-  echo "$msg"
-  # exit with the given code
-  exit "$code"
+	# message to print
+	local msg="${1}"
+	# set exit code
+	local code="${2}"
+	# print error message
+	echo "$msg"
+	# exit with the given code
+	exit "$code"
 }
 
 #===  FUNCTION  ======================
@@ -43,16 +43,6 @@ function test_file() {
 	if [ ! -f "${1}" ] || [ ! -r "${1}" ]; then
 		err_exit "File '${1}' does not exist or it is not readable. Aborted." 1
 	fi
-}
-
-#===  FUNCTION  =======================
-#
-# Strip surrounding quotes from string
-#
-#======================================
-function strip_quotes() {
-  local -n str="$1"
-  [[ "${str}" == \"*\" || "${str}" == \'*\' ]] && str="${str:1:-1}"
 }
 
 #===  FUNCTION  ========
@@ -76,17 +66,17 @@ function parse_conf() {
 	conf=$(<"$config")
 	# clean config: skip blank lines, comments,
 	# trim leading and trailing whitespaces spaces, compact assignments
-  conf=$(echo "$conf" | sed 's/#.*//' | sed 's/^[ \t]*//;s/[ \t]*$//' | grep -P -v "^[ \t]*$|^#" | sed 's/[ \t]*=[ \t]*/=/')
+	conf=$(echo "$conf" | sed 's/#.*//' | sed 's/^[ \t]*//;s/[ \t]*$//' | grep -P -v "^[ \t]*$|^#" | sed 's/[ \t]*=[ \t]*/=/')
 
 	# number of all entries in config file
 	local all
 	all=$(echo "$conf" | wc -l)
 	# number of correct entries in config file
 	local correct
-  correct=$(echo "$conf" | grep -c '[^^]=')
+	correct=$(echo "$conf" | grep -c '[^^]=')
 	# exit if number of correct entries in config file less than number of all entries
 	[ "$correct" != "$all" ] && err_exit "Syntax of ${config_name} is incorrect. Aborted." 2
-	
+
 	## set values for options
 	while read -r line
 	do
@@ -96,9 +86,9 @@ function parse_conf() {
 		value=${line#*=}
 		# strip quotes from value
 		[[ "${value}" == \"*\" || "${value}" == \'*\' ]] && value="${value:1:-1}"
-	  # assign the current value to the current variable
+		# assign the current value to the current variable
 		printf -v "$option" '%s' "$value"
-	done <<< "$conf"	
+	done <<< "$conf"
 }
 
 #===  FUNCTION  =============
@@ -107,6 +97,6 @@ function parse_conf() {
 #
 #============================
 function process() {
-  set_names
-  parse_conf
+	set_names
+	parse_conf
 }
