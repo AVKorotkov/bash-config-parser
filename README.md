@@ -1,4 +1,4 @@
-# bash-config-parser
+# Bash configuration files parser
 
 `bash-config-parser` is a `Bash` function for parsing of traditional
 configuration files like `/etc/adduser.conf` in `Debian GNU/Linux`. So
