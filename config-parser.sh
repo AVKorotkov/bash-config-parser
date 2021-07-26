@@ -65,7 +65,7 @@ function parse_conf() {
 	local conf
 	conf=$(<"$config")
 	# clean config: skip blank lines, comments,
-	# trim leading and trailing whitespaces spaces, compact assignments
+	# trim leading and trailing whitespaces, compact assignments
 	conf=$(echo "$conf" | sed 's/#.*//' | sed 's/^[ \t]*//;s/[ \t]*$//' | grep -P -v "^[ \t]*$|^#" | sed 's/[ \t]*=[ \t]*/=/')
 
 	# number of all entries in config file
